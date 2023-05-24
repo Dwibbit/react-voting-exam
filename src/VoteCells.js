@@ -1,14 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-export default function VoteCells({ nominee }) {
+export default function VoteCells({ nominee, selectedVote, disableCategory, storedSelected, categoryID }) {
 
     const [currNominee, setCurrNomeinee] = useState(nominee);
     const [selected, setSelected] = useState(false);
 
-    function selectOption(val) {
-        console.log(val.target.value);
-        alert(currNominee.name + " selected!");
-        setSelected(true);
+    useEffect(() => {
+        if(storedSelected) {
+            if(currNominee.id == storedSelected.voteID && categoryID == storedSelected.categoryID)
+                setSelected(true);
+        }
+    }, [storedSelected]);
+
+    function selectOption() {
+        if(disableCategory) {
+            alert("You have already voted for this category!");
+        }
+        else {
+            alert(currNominee.name + " selected!");
+            setSelected(true);
+            selectedVote(currNominee.id, currNominee.name);
+        }
     }
 
     return (

@@ -104,7 +104,7 @@
 
 .Vote-button:disabled {
   background-color: #E6C635;
-  cursor: not-allowed;
+  /* cursor: not-allowed; */
 }
 
 .Submit-button {
@@ -120,7 +120,9 @@
 }
 
 .Submit-button:hover {
-  color: white;
-  background-color: black;
+  border: solid;
+  border-color: #00595C;
+  color: #E6C635;
+  background-color: #BE6C27;
   cursor: pointer;
 }
