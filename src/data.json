@@ -1,0 +1,66 @@
+{
+    "categories": [
+        {
+            "id": 1,
+            "categoryName": "Favorite Starter Pokemon",
+            "nominees": [
+                {
+                    "id": 1,
+                    "name": "Bulbasaur",
+                    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+                },
+                {
+                    "id": 2,
+                    "name": "Squirtle",
+                    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
+                },
+                {
+                    "id": 3,
+                    "name": "Charmander",
+                    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
+                },
+                {
+                    "id": 4,
+                    "name": "Pikachu",
+                    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+                },
+                {
+                    "id": 5,
+                    "name": "Eevee",
+                    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "categoryName": "Favorite Legendary Pokemon",
+            "nominees": [
+                {
+                    "id": 1,
+                    "name": "Mew",
+                    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png"
+                },
+                {
+                    "id": 2,
+                    "name": "Mewtwo",
+                    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png"
+                },
+                {
+                    "id": 3,
+                    "name": "Groudon",
+                    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/383.png"
+                },
+                {
+                    "id": 4,
+                    "name": "Kyogre",
+                    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/382.png"
+                },
+                {
+                    "id": 5,
+                    "name": "Rayquaza",
+                    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/384.png"
+                }
+            ]
+        }
+    ]
+}
