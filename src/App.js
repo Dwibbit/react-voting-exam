@@ -1,9 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import CategoryGrid from './CategoryGrid';
-import VoteCells from './VoteCells';
 import data from './data.json';
-import { createContext, useEffect, useState, useRef } from 'react';
+import { createContext, useState, useRef } from 'react';
 export const DataContext = createContext([null]);
 
 function App() {
@@ -14,16 +12,14 @@ function App() {
   const [votes, setVotes] = useState([]);
   const existingVotes = useRef(JSON.parse(localStorage.getItem('votes')));
 
-  useEffect(() => {
-    // console.log(existingVotes.current);
-  }, [])
-
   function categoryVoted(categoryID, voteID, voteName) {
+    //increments when a user votes for a category, votes get saved in votes state
     totalVotes.current = totalVotes.current+1;
     setVotes([...votes, {categoryID, voteID, voteName}]);
   }
 
   function createVotedString(voteArray) {
+    //message if the user has already voted with their votes displayed
     let votesString = "";
     for (const [index, vote] of voteArray.entries()) {
       if(index == 0)
@@ -38,12 +34,15 @@ function App() {
 
   function submitVotes() {
     if(existingVotes.current) {
+      //message if the user has already voted from previous sessions
       alert("You already voted for: " + createVotedString(existingVotes.current));
     }
     else if(submitted.current) {
+      //message if the user has already voted in this current session
       alert("You already voted for: " + createVotedString(votes));
     }
     else if(totalVotes.current == totalCategories) {
+      //if the total user category votes are the same as the total categories from data, the program will proceed as finished
       alert("Thank you for your votes!");
       submitted.current = true;
       setVotes(votes.sort((a, b) => a.categoryID - b.categoryID));

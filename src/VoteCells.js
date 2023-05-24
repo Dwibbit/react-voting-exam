@@ -6,6 +6,7 @@ export default function VoteCells({ nominee, selectedVote, disableCategory, stor
     const [selected, setSelected] = useState(false);
 
     useEffect(() => {
+        //check if user has already voted from previous sessions
         if(storedSelected) {
             if(currNominee.id == storedSelected.voteID && categoryID == storedSelected.categoryID)
                 setSelected(true);
@@ -13,6 +14,7 @@ export default function VoteCells({ nominee, selectedVote, disableCategory, stor
     }, [storedSelected]);
 
     function selectOption() {
+        //will alert an error if a user already voted for the current category. will alert selected option with name otherwise
         if(disableCategory) {
             alert("You have already voted for this category!");
         }

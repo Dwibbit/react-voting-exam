@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Created with React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created with with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
@@ -8,63 +8,44 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+App is also deployed through AWS in a personal bucket [http://rrs.voting-test.s3-website-ap-southeast-2.amazonaws.com/](http://rrs.voting-test.s3-website-ap-southeast-2.amazonaws.com/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## For Deployment
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Run the build command to produce build files for uploading to AWS S3. Upload files to AWS S3 console under newly created bucket. Enable Static Website Hosting through S3 bucket properties. Enabled permissions script to allow all users get objects from resource link, including public access to the hosting site.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Software Documentation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Overview of Components
 
-### `npm run eject`
+The software is a single session voting software for multiple Pokemon categories. All data for the categories and individual Pokemon are loaded in a JSON file in the /src folder under data.json with an array for categories with objects for all Pokemon choices for that category. Additional categories can be added through adding objects of the same template.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The components are separated into App, CategoryGrid, and VoteCells.
+The App component contains all of the components, in which multiple CategoryGrids can be loaded depending on how many Categories are retrieved from the data category array, in which each category is mapped in the App for displaying each category. App also includes the button for submitting votes.
+CategoryGrid shows multiple VoteCells, in which VoteCells show each option to vote in each given category.
+VoteCells contain individual Pokemon data with name, picture, and vote button.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Votes submitted are stored in LocalStorage for allowing only one submission per unique user.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## React Hooks used
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### useEffect, useState, useRef, useContext
 
-## Learn More
+#### useContext
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+CreateContext (DataContext) was used to create a context provider wrapper around the App and storing the values from the data.json file so they may be accessed anywhere among the child components (CategoryGrids and VoteCells)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### useEffect
 
-### Code Splitting
+useEffect used in child components for detecting if data exists in LocalStorage to determine if a user has already voted
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### useState & useRef
 
-### Analyzing the Bundle Size
+useState amd useRef were both used for state management across all components
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Additional documentation found in software functions

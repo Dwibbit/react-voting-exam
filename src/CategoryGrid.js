@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { DataContext } from './App';
 import VoteCells from './VoteCells';
@@ -12,6 +12,7 @@ export default function CategoryGrid({categoryID, categoryVoted, storedVotes}) {
     const [storedSelection, setStoredSelection] = useState(storedVotes);
 
     useEffect(() => {
+        //check if user has already voted from previous sessions
         if(storedVotes) {
             setDisableCategory(true);
             setStoredSelection(storedVotes.find(obj => {
@@ -21,6 +22,7 @@ export default function CategoryGrid({categoryID, categoryVoted, storedVotes}) {
       }, []);
 
     function selectedCell(dataID, name) {
+        //runs when a user votes for an option
         categoryVoted(categoryID, dataID, name);
         setDisableCategory(true);
     }
