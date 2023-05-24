@@ -46,6 +46,6 @@ useEffect used in child components for detecting if data exists in LocalStorage 
 
 #### useState & useRef
 
-useState amd useRef were both used for state management across all components
+useState and useRef were both used for state management across all components
 
 Additional documentation found in software functions
